@@ -12,6 +12,20 @@ Normally I would use feature branches, bugfix branches, and pull requests.
 However, as I'm the only person working on this project there's no need; I'm
 going to work directly on master.
 
+## Quickstart
+
+    git clone git@github.com:kalleth/first-result-linter.git
+    cd first-result-linter/
+    # install ruby 2.2 if required; your ruby version manager should handle this
+    # rvm/rbenv install 2.2
+
+### App
+TODO
+
+### Test suite
+
+    bundle exec rspec
+
 ## Initial component identification
 
 I think we'll need the following components:
