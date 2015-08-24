@@ -1,10 +1,11 @@
 require 'net/http'
+require 'search/google'
 
 class FirstResultLinter
   class ScrapeError < StandardError; end
   class InvalidURI < StandardError; end
 
-  def initialize(searcher, linter)
+  def initialize(searcher = Search::Google.new, linter)
     @searcher = searcher
     @linter = linter
   end
