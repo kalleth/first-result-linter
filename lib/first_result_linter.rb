@@ -11,7 +11,7 @@ class FirstResultLinter
 
   def call(term)
     linter.call(
-      source(
+      fetcher.call(
         searcher.call(term)
       )
     )
@@ -29,12 +29,14 @@ private
   #
   # I'm making the conscious decision that handling every kind of network error
   # is outside the scope of this exercise.
-  def source(url)
-    uri = URI(url)
-    raise InvalidURI, "Invalid URL: #{url}" if uri.host.nil?
+  def fetcher
+    ->(url) {
+      uri = URI(url)
+      raise InvalidURI, "Invalid URL: #{url}" if uri.host.nil?
 
-    Net::HTTP.get(uri).tap do |page_content|
-      raise ScrapeError, "No content returned from #{url}" if page_content.nil?
-    end
+      Net::HTTP.get(uri).tap do |page_content|
+        raise ScrapeError, "No content returned from #{url}" if page_content.nil?
+      end
+    }
   end
 end
