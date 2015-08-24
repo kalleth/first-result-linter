@@ -5,6 +5,7 @@ class FirstResultLinter
   end
 
   def call(term)
+    searcher.call(term)
   end
 
 private
