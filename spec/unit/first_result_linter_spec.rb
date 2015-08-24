@@ -5,13 +5,14 @@ describe FirstResultLinter do
   let(:term) { "cheesy wotsits" }
   let(:first_result) { 'https://en.wikipedia.org/wiki/Wotsits' }
   let(:searcher) { double(:searcher, call: first_result) }
-  let(:validator) { double(:validator) }
+  let(:linter) { double(:linter, call: []) }
+  let(:result_body) { "<html></html>" }
 
   before do
-    stub_request(:get, first_result).to_return(body: "<html></html>")
+    stub_request(:get, first_result).to_return(body: result_body)
   end
 
-  subject(:first_result_linter) { FirstResultLinter.new(searcher, validator) }
+  subject(:first_result_linter) { FirstResultLinter.new(searcher, linter) }
 
   it "asks the searcher for the first result" do
     first_result_linter.call(term)
@@ -23,6 +24,12 @@ describe FirstResultLinter do
     first_result_linter.call(term)
 
     expect(a_request(:get, first_result)).to have_been_made.once
+  end
+
+  it "sends the generated HTML to the validator" do
+    first_result_linter.call(term)
+
+    expect(linter).to have_received(:call).with(result_body)
   end
 
   [301, 404, 500].each do |code|

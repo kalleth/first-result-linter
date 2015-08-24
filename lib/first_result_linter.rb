@@ -4,19 +4,21 @@ class FirstResultLinter
   class ScrapeError < StandardError; end
   class InvalidURI < StandardError; end
 
-  def initialize(searcher, validator)
+  def initialize(searcher, linter)
     @searcher = searcher
-    @validator = validator
+    @linter = linter
   end
 
   def call(term)
-    source(
-      searcher.call(term)
+    linter.call(
+      source(
+        searcher.call(term)
+      )
     )
   end
 
 private
-  attr_reader :searcher, :validator
+  attr_reader :searcher, :linter
 
   # Using Net::HTTP.get here prevents us having to capture all edge cases; so
   # long as the URI is valid any request will just return a nil body in error
