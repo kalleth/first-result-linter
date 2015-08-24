@@ -64,7 +64,7 @@ going to work directly on master.
 
 ### New Linter
 * Ensure a `Linter::HTMLTidy` (or other) matches this API:
-  * `#call(html)` returns an array of strings.
+  * `#call(html)` returns an array of `Linter::Response` objects.
 
 ## Future enhancements
 * Output the URL returned / that's being linted. This will involve
