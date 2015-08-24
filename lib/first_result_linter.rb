@@ -1,11 +1,14 @@
+$:.unshift File.dirname(__FILE__)
+
 require 'net/http'
 require 'search/google'
+require 'linter/w3c'
 
 class FirstResultLinter
   class ScrapeError < StandardError; end
   class InvalidURI < StandardError; end
 
-  def initialize(searcher = Search::Google.new, linter)
+  def initialize(searcher = Search::Google.new, linter = Linter::W3C.new)
     @searcher = searcher
     @linter = linter
   end
