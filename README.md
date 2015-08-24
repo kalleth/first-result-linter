@@ -34,7 +34,22 @@ going to work directly on master.
     # rvm/rbenv install 2.2
 
 ### App
-TODO
+
+    $ ./first_result_linter "cheesy wotsits"
+
+    Linting the first result on google for 'cheesy wotsits'
+    RESULTS:
+
+    Category: Info
+      The Content-Type was text/html. Using the HTML parser.
+
+    Category: Info
+      Using the schema for HTML with SVG 1.1, MathML 3.0, RDFa 1.1, and ITS 2.0 support.
+
+    Category: Error
+      Element link is missing required attribute property.
+      From line 451, column 1; to line 451, column 298
+
 
 ### Test suite
 

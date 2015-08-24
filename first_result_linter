@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require_relative 'lib/first_result_linter'
+
+term = ARGV[0]
+
+if term.nil? || term == ""
+  puts 'Usage: ./first_result_linter "search term"'
+  exit 1
+else
+  puts "Linting the first result on google for '#{term}'"
+  results = FirstResultLinter.new.call(term)
+  puts "RESULTS:"
+  puts ""
+  results.each do |result|
+    puts "Category: #{result.category}"
+    puts "  #{result.title}"
+    puts "  #{result.location}"
+  end
+end
