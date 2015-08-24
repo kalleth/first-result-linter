@@ -1,5 +1,4 @@
-# first-result-linter
-Technical exercise. Searches google, lints the first result, and prints errors.
+[![Circle CI](https://circleci.com/gh/kalleth/first-result-linter/tree/master.svg?style=svg)](https://circleci.com/gh/kalleth/first-result-linter/tree/master)
 
 # Brief
 
@@ -7,7 +6,13 @@ Write an application that searches for a provided term on google, then clicks
 on the first link and lints the HTML on the page using W3C. The application
 should not assume that it will always use google or W3C.
 
-# Initial component identification
+## A note on git strategy
+
+Normally I would use feature branches, bugfix branches, and pull requests.
+However, as I'm the only person working on this project there's no need; I'm
+going to work directly on master.
+
+## Initial component identification
 
 I think we'll need the following components:
 
@@ -33,7 +38,7 @@ I think we'll need the following components:
       on exactly what results are returned.
   * `Linter::W3C`
 
-# Gem choices (first pass)
+## Gem choices (first pass)
 * Command line arguments: No gem, as the term will probably be "everything
   provided to the binstub". `ARGV` will do for now.
 * Web requests: HTTParty, because everyone likes to party hard.
