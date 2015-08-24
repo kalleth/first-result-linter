@@ -41,5 +41,5 @@ I think we'll need the following components:
 ## Gem choices (first pass)
 * Command line arguments: No gem, as the term will probably be "everything
   provided to the binstub". `ARGV` will do for now.
-* Web requests: HTTParty, because everyone likes to party hard.
-* Testing: rspec, probably VCR too but I'll add that as required.
+* Web requests: probably just Net::HTTP, initially. We'll see.
+* Testing: rspec, webmock
