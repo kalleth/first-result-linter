@@ -58,7 +58,7 @@ going to work directly on master.
 ## Adding more searchers and linters
 
 ### New Searcher
-* Ensure a `Searcher::DuckDuckGo` (or other) matches this API:
+* Ensure a `Search::DuckDuckGo` (or other) matches this API:
   * `#call(term)` returns the URL of the first result
 * Switch it out in the initializer of `FirstResultLinter`
 
