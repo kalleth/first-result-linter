@@ -66,9 +66,13 @@ going to work directly on master.
 * Ensure a `Linter::HTMLTidy` (or other) matches this API:
   * `#call(html)` returns an array of strings.
 
-## Initial component identification
+## Future enhancements
+* Output the URL returned / that's being linted. This will involve
+  restructuring the linter to perform linting and fetching in a two stage
+  process, or returning a two-element return value.
+* Extract the fetching of the HTML of the first result from the Orchestrating
+  class (`FirstResultLinter`) to a class with the sole responsibility of
+  fetching the HTML.
+* Add an integration test which runs the script directly using a VCR cassette.
+* Refactor `Linter::W3C#parse` so it doesn't violate demeter so much.
 
-I think we'll need the following components:
-
-* Entrypoint, accepting a search term as an argument
-  * binstub, probably
