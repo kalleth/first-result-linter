@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'rest-client'
-require 'linter/response'
+require_relative 'response'
 
 module Linter
   class ResponseError < StandardError; end
@@ -10,12 +10,12 @@ module Linter
 
     def call(html)
       parse(
-        response(html)
+        fetch(html)
       )
     end
 
   private
-    def response(html)
+    def fetch(html)
       RestClient.post(
         ENDPOINT,
         {

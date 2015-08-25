@@ -1,8 +1,6 @@
-$:.unshift File.dirname(__FILE__)
-
 require 'net/http'
-require 'search/google'
-require 'linter/w3c'
+require_relative 'search/google'
+require_relative 'linter/w3c'
 
 class FirstResultLinter
   class ScrapeError < StandardError; end
